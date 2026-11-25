@@ -27,16 +27,6 @@ python -m scripts.diagnose
 
 ```
 
-## Results at a glance (v0.1 baseline)
-
-| Subject | Online acc (LDA) | Online acc (SVM) | CV AUC (train) |
-| --- | ---: | ---: | ---: |
-| 61 | 60.4% | 61.0% | 0.62 |
-| 62 | (from your analysis) | (from your analysis) | 0.77 |
-| 63 | (from your analysis) | (from your analysis) | 0.59 |
-
-**Key finding:** The decoders favor right-hand predictions for subjects 61 and 63. Left-hand accuracy for these subjects ranges from 0.26 to 0.47, below chance.
-
 ## Diagnosis v1 — Baseline CSP(4) + LDA/SVM, 2 s window
 
 ### 1. Training signal quality (CV AUC, runs 1–2)
