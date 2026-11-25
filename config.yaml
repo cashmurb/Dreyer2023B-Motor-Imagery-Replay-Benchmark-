@@ -1,0 +1,25 @@
+dataset: 
+  name: "Dreyer2023B"
+  subjects: [61, 62, 63]
+  channels: ["C3", "C4", "Cz", "FC1", "FC2", "CP1", "CP2"]
+
+paradigm: 
+  fmin: 8.0
+  fmax: 30.0 
+  tmin: 3.5 
+  tmax: 7.5 
+
+training:
+  csp_components: 4
+  train_runs: [1, 2] # calbirations runs
+  test_runs: [3, 4, 5, 6] # held-out online runs 
+  cv_folds: 5 
+
+replay:
+  window_seconds: 2.0
+  update_interval_seconds: 0.2 
+  confidence_threshold: 0.6
+
+output: 
+  models_dir: "models"
+  results_dir: "results"

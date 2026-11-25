@@ -1,0 +1,22 @@
+# Virtual Environment
+.venv/
+mi/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Project Outputs (Do not commit large files or models)
+models/*.joblib
+results/*.csv
+
+# OS generated files
+.DS_Store
+Thumbs.db
