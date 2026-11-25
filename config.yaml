@@ -16,7 +16,7 @@ training:
   cv_folds: 5 
 
 replay:
-  window_seconds: 2.0
+  window_seconds: 3.0
   update_interval_seconds: 0.2 
   confidence_threshold: 0.6
 
