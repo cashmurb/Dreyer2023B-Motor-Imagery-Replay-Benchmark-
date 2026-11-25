@@ -85,3 +85,7 @@ python -m scripts.diagnose
 
 - Test a 3 s replay window against the 2 s baseline.
 - Document the right-hand bias, subject 63’s baseline performance, and the concentration of trials below 50% and above 80% accuracy.
+
+| Action | Status | Rationale |
+| :--- | :--- | :--- |
+| **Test 3 s replay window** | **Completed** | +2.5% online accuracy, high-confidence calibration improved from 65% to 70% |
