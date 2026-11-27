@@ -14,7 +14,7 @@ def check_training_signal(config):
     paradigm = load_paradigm(config)
     rows = []
     for subject in config["dataset"]["subjects"]:
-        X, labels, meta = get_subject_data(dataset, paradigm, subject)
+        X, labels, meta = get_subject_data(dataset, paradigm, subject, config)
         train_mask, _ = split_by_runs(meta, config["training"]["train_runs"], config["training"]["test_runs"])
         X_tr, y_tr = X[train_mask], labels[train_mask]
         label_map = {"left_hand": 0, "right_hand": 1} 
@@ -44,7 +44,7 @@ def check_csp_dimensionality(config):
     paradigm = load_paradigm(config)
     rows = []
     for subject in config["dataset"]["subjects"]:
-        X, labels, meta = get_subject_data(dataset, paradigm, subject)
+        X, labels, meta = get_subject_data(dataset, paradigm, subject, config)
         train_mask, _ = split_by_runs(meta, config["training"]["train_runs"], config["training"]["test_runs"])
         X_tr, y_tr = X[train_mask], labels[train_mask]
         label_map = {"left_hand": 0, "right_hand": 1}
@@ -69,7 +69,7 @@ def check_window_length(config):
     sfreq = 250
     rows = []
     for subject in config["dataset"]["subjects"]:
-        X, labels, meta = get_subject_data(dataset, paradigm, subject)
+        X, labels, meta = get_subject_data(dataset, paradigm, subject, config)
         train_mask, _ = split_by_runs(meta, config["training"]["train_runs"], config["training"]["test_runs"])
         X_tr, y_tr = X[train_mask], labels[train_mask]
         label_map = {"left_hand": 0, "right_hand": 1}

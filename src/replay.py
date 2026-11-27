@@ -35,19 +35,26 @@ def replay_trials(X_test, y_test, meta_test, decoders, config, log_path):
     step_samples = int(config["replay"]["update_interval_seconds"]* sfreq) 
     threshold = config["replay"]["confidence_threshold"]
 
-    rows = []
     LABEL_MAP = {"left_hand": 0, "right_hand": 1}
+    rows = []
     for trial_idx in range(len(X_test)):
         trial = X_test[trial_idx]
         true_label = LABEL_MAP[y_test[trial_idx]]
-        buf = RingBuffer(trial.shape[0], win_samples)
 
-        for start in range(0, trial.shape[1] - win_samples + 1, step_samples):
+        # Prime the buffer with the first full window 
+        buf = RingBuffer(trial.shape[0], win_samples)
+        buf.push(trial[:, :win_samples])
+
+        # Then slide step_samples at a time
+        for start in range(win_samples, trial.shape[1], step_samples):
             chunk = trial[:, start:start + step_samples]
+            if chunk.shape[1] == 0:
+                break
             buf.push(chunk)
             window = buf.get_window(win_samples)
             if window is None:
                 continue 
+
             for name, dec in decoders.items():
                 t0 = time.perf_counter()
                 pred, conf = dec.predict(window) 

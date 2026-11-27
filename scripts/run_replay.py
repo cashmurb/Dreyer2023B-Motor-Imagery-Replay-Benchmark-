@@ -14,7 +14,7 @@ def main(config_path="config.yaml"):
     paradigm = load_paradigm(config)
 
     for subject in config["dataset"]["subjects"]:
-        X, labels, meta = get_subject_data(dataset, paradigm, subject)
+        X, labels, meta = get_subject_data(dataset, paradigm, subject, config)
         _, test_mask = split_by_runs(
             meta, config["training"]["train_runs"], config["training"]["test_runs"]
         )

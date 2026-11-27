@@ -16,7 +16,7 @@ def main(config_path="config.yaml"):
 
     for subject in config["dataset"]["subjects"]:
         print(f"\n Subject {subject}")
-        X, labels, meta = get_subject_data(dataset, paradigm, subject)
+        X, labels, meta = get_subject_data(dataset, paradigm, subject, config)
         train_mask, _ = split_by_runs(
             meta, config["training"]["train_runs"], config["training"]["test_runs"]
         )

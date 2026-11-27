@@ -10,10 +10,11 @@ def build_decoder(name, n_components):
     if name == "lda":
         clf = LDA()
     elif name == "svm":
-        clf = SVC(kernel="linear", probability=True, random_state=42)
+        clf = SVC(kernel="linear", probability=True, class_weight="balanced", random_state=42)
     else:
         raise ValueError(f"Unknown decoder: {name}")
-    return make_pipeline(CSP(n_components=n_components, log=True), clf)
+
+    return make_pipeline(CSP(n_components=n_components, reg=0.01, log=True), clf)
 
 def save_decoder(pipe, path):
     joblib.dump(pipe, path)
@@ -34,4 +35,3 @@ class ReplayDecoder:
         proba = self.pipe.predict_proba(X)[0]
         idx = int(np.argmax(proba))
         return self.pipe.classes_[idx], float(proba[idx])
-        
