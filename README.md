@@ -132,7 +132,7 @@ python -m scripts.diagnose
 
 **Key finding:** After the combined changes, SVM had higher accuracy above threshold (77.4% vs. 68.8%) and lower coverage (1,336 vs. 1,909 accepted windows out of 2,400). The majority-class fraction remained about 64–66%.
 
-## Version 2a Post-Preprocessing Diagnosis
+## Post-Preprocessing Diagnosis
 
 ### Training signal quality (CV AUC, R1–R2)
 
