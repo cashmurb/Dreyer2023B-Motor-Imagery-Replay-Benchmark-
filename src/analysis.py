@@ -51,3 +51,22 @@ def run_to_run_drift(df):
         per_trial = g.groupby("trial")["correct"].mean()
         out[name] = per_trial
     return out
+
+def per_trial_majority(df):
+    """Aggregates window predictions into one vote per trial."""
+    above = df[df["above_threshold"]].copy()
+    results = []
+    for (subj, dec, trial), g in above.groupby(["subject", "decoder", "trial"]):
+        majority = g["predicted"].mode()[0]
+        true = g["true_label"].iloc[0]
+        results.append({
+            "subject": subj,
+            "decoder": dec,
+            "trial": trial,
+            "true_label": true,
+            "majority_prediction": majority,
+            "correct": majority == true,
+            "n_windows": len(g),
+            "n_correct_windows": int(g["correct"].sum()),
+        })
+    return pd.DataFrame(results)
