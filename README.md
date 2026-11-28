@@ -134,7 +134,7 @@ For subjects 61 and 63, right-hand accuracy ranged from 0.71 to 0.89 and left-ha
 
 The combined changes raised accuracy above threshold and accuracy in the highest confidence bin. The number of evaluated windows also fell from 10,560 to 2,400 per decoder, so raw failure counts reflect both the change in error rate and the change in evaluation volume.
 
-## Version 3 — Post-Preprocessing Diagnosis
+## Post-Preprocessing Diagnosis
 
 ### Training signal quality (CV AUC, R1–R2)
 
@@ -234,8 +234,16 @@ Six components improved calibration-run CV AUC for all three subjects. On held-o
 
 | Action | Status | Result |
 | --- | --- | --- |
+<<<<<<< HEAD
 | Baseline CSP(4) + LDA/SVM, 2 s window | Completed | 60.5% LDA / 61.0% SVM online accuracy |
 | Test 3 s replay window | Completed | 63.0% LDA / 63.5% SVM (+2.5 points each) |
 | Add CAR, epoch rejection, and CSP `reg=0.01` | Completed | 68.8% LDA / 77.4% SVM (+8.3 / +16.4 points versus the 2 s baseline) |
 | Test `n_components=6` | Completed, reverted to four | Calibration CV AUC rose for all three subjects. Held-out accuracy changed by +0.3 points for LDA and −7.6 points for SVM. |
 | Add per-trial majority voting | Planned | Evaluate trial-level accuracy and coverage using existing window predictions. |
+=======
+| Baseline CSP(4) + LDA/SVM, 2 s window | Completed | 60.5% / 61.0% online accuracy |
+| Test 3 s replay window | Completed | 63.0% / 63.5% online accuracy (+2.5 points each) |
+| Add CAR, rejection, and CSP `reg=0.01` | Completed | 68.8% / 77.4% online accuracy (+8.3 / +16.4 points versus the 2 s baseline) |
+| Increase `n_components` to 6 | Planned | Projected gain of 1–3 points |
+| Add per-trial majority voting | Planned | Projected gain of 5–10 points for subjects 61 and 62 |
+>>>>>>> 241dccd27a5b2f0acca1f7024875d724e25508f3
